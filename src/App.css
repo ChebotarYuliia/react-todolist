@@ -48,17 +48,39 @@
 }
 
 .todoList li{
-    width: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.todoList li p{
+    width: 90%;
     padding: 10px;
     color: #fff;
     font-weight: bold;
     font-size: 14px;
     background: #705b69;
     list-style: none;
-    margin: 10px 0;
+    margin: 10px 10px 10px 0;
 }
 
-.todoList li:hover{
-  background: #9c5653;
+.todoList li p:hover{
+  background: #c53c38;
+  cursor: pointer;
+}
+
+.todoList li button{
+    width: 10%;
+    padding: 10px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 14px;
+    background: #d64d60;
+    border: none;
+    box-shadow: none;
+}
+
+.todoList li button:hover{
+  background: #bb4050;
   cursor: pointer;
 }

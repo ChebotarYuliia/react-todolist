@@ -8,7 +8,7 @@ class App extends Component {
 
     this.state = {
        inputValue: '',
-       list: []
+       list: [],
     };
 
     this.addToList = this.addToList.bind(this);
@@ -41,11 +41,21 @@ class App extends Component {
     let filteredList = this.state.list.filter( function(item) {
         return ( item.key !== key)
       });
-      console.log(filteredList);
       this.setState({
         list: filteredList
       })
   }
+
+  submitChanges = (editedValue, editedItemKey) => {
+    let filteredList = this.state.list.filter( function(item) {
+      return ( item.key === editedItemKey) ? item : null;
+    });
+    filteredList.text = editedValue;
+    let inStateList = (this.state.list).concat(filteredList);
+    this.setState({
+      list: inStateList,
+    })
+  };
 
   render() {
     return (
@@ -60,11 +70,9 @@ class App extends Component {
                   onClick={ () => this.addToList(this.state.inputValue)}>
                   add
           </button>
-          {/* <ul className="todoList">
-              {this.state.list.map( (val) => <li onClick={ () => this.deleteItem}>{val}</li>)}
-          </ul> */}
           <ToDoItems entries={this.state.list} 
-                     delete={ this.deleteItem }
+                     delete={this.deleteItem}
+                     submit={this.submitChanges}
           />
         </div>
       </div>
